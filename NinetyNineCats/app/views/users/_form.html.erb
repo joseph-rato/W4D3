@@ -1,0 +1,21 @@
+
+<% if type == :login %>
+  <% action_url = session_url %>
+  <% button_txt = "Login!!!" %>
+<% elsif type == :sign_up %>
+  <% action_url = users_url %>
+  <% button_txt = "Create User!!!" %>
+<% end %>
+
+<form action="<%= action_url %> " method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label>Username:
+    <input type="text" name="user[username]" value="">
+  </label>
+  <br>
+  <label>Password:
+    <input type="password" name="user[password]" value="">
+  </label>
+  <br>
+  <input type="submit" value="<%= button_txt %>">
+</form>

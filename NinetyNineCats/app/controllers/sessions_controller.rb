@@ -5,13 +5,14 @@ class SessionsController < ApplicationController
   
   def create 
      @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
-     @user.reset_session_token
-     session[:session_token] = @user.session_token
+     login!(@user)
      redirect_to cats_url 
   end
   
   def destroy
-     
+     # current_user.reset_session_token!
+     logout!
+     redirect_to cats_url
   end 
   
 end
