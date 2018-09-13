@@ -13,7 +13,8 @@ class UsersController < ApplicationController
       login!(@user)
       redirect_to cats_url 
     else 
-      render flash.now[:errors]
+      flash[:errors] = @user.errors.full_messages
+      redirect_to new_user_url #flash[:errors]
       # render json: @user.errors.full_messages, status: 422
     end
   end

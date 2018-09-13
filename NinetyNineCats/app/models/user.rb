@@ -36,7 +36,7 @@ class User < ApplicationRecord
     if @user
       @user.is_password?(password) ? @user : nil
     else
-      User.new
+      nil 
     end
   end
   
